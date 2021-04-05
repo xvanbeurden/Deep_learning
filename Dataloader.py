@@ -26,7 +26,8 @@ warnings.filterwarnings("ignore")
 
 plt.ion()
 
-root_dir = r'drive/MyDrive/Datafiles_mat/'
+root_dir = r'gdrive/MyDrive/Datafiles_mat/'
+root_dir_images = r'gdrive/MyDrive/Datasets/'
 
 dbStruct = namedtuple('dbStruct', ['whichSet', 'dataset',
     'dbImage', 'utmDb', 'qImage', 'utmQ', 'numDb', 'numQ',
@@ -63,7 +64,6 @@ class DatasetImages(Dataset):
         self.input_transform = input_transform
         self.dbStruct = parse_database(structFile)
 
-        self.root_dir_images = r'drive/MyDrive/Datasets/'
         self.images = [join(root_dir_images, dbIm) for dbIm in self.dbStruct.dbImage]
 
     def __getitem(self, index):
@@ -98,7 +98,6 @@ class QueryImages(Dataset):
         self.nNegSample = nNegSample  # number of negatives to randomly sample
         self.nNeg = nNeg  # number of negatives used for training
 
-        self.root_dir_images = r'gdrive/MyDrive/Datasets/'
         self.images = [join(root_dir_images, dbIm) for dbIm in dbImage]
 
         knn = NearestNeighbors(n_jobs=-1)
