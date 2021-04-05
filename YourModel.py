@@ -18,7 +18,7 @@ class NetVLAD(nn.Module):
         self.normalize_input = normalize_input
         self.conv = nn.Conv2d(dim, num_clusters, kernel_size=(1, 1), bias=True)
         self.centroids = nn.Parameter(torch.rand(num_clusters, dim))
-        self._init_params()
+        # self._init_params() Waar hebben we dit voor nodig?
 
     def init_params(self, clsts, traindescs):
         knn = NearestNeighbors(n_jobs=-1)
