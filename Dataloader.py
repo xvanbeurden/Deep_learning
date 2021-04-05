@@ -68,8 +68,6 @@ class DatasetImages(Dataset):
         self.images = [join(root_dir_images, dbIm) for dbIm in self.dbStruct.dbImage]
 
     def __getitem__(self, index):
-        if index == 1166:
-            index = index + 1
         image = Image.open(self.images[index])
 
         # if self.input_transform:
