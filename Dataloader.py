@@ -99,7 +99,7 @@ class QueryImages(Dataset):
         self.nNegSample = nNegSample  # number of negatives to randomly sample
         self.nNeg = nNeg  # number of negatives used for training
 
-        self.images = [join(root_dir_images, dbIm) for dbIm in dbImage]
+        self.images = [join(root_dir_images, dbIm) for dbIm in self.dbStruct.dbImage]
 
         knn = NearestNeighbors(n_jobs=-1)
         knn.fit(self.dbStruct.utmDb)
