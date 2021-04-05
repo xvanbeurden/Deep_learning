@@ -63,10 +63,11 @@ class DatasetImages(Dataset):
 
         self.input_transform = input_transform
         self.dbStruct = parse_database(structFile)
+        self.dataset = self.dbStruct.dataset
 
         self.images = [join(root_dir_images, dbIm) for dbIm in self.dbStruct.dbImage]
 
-    def __getitem(self, index):
+    def __getitem__(self, index):
         image = Image.open(self.images[index])
 
         # if self.input_transform:
@@ -88,7 +89,7 @@ class DatasetImages(Dataset):
 
 
 class QueryImages(Dataset):
-    def __init__(self, structFile, RandomNeg=1000, nNeg=10, nPos=10, margin=0.1, input_transform=None):
+    def __init__(self, structFile, nNegSample=1000, nNeg=10, nPos=10, margin=0.1, input_transform=None):
         super().__init__()
 
         self.input_transform = input_transform
