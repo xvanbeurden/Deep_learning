@@ -9,7 +9,7 @@ class NetVLAD(nn.Module):
     '''Only need NetVLAD class.
     CNN layers were imported'''
 
-    def __init__(self, config, num_clusters=64, dim=128,
+    def __init__(self, num_clusters=64, dim=128,
                  normalize_input=True):
         super(NetVLAD, self).__init__()
         self.num_clusters = num_clusters
